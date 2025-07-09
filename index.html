@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Copy Button Example</title>
+  <title>Copy Text Silently</title>
   <style>
     body {
       font-family: sans-serif;
@@ -29,23 +29,15 @@
 
   <script>
     function copyText() {
-      const text = `Test 456`;
+      const text = `Test 789.`;
 
-      if (!navigator.clipboard) {
-        console.warn("Clipboard API not supported");
-        alert("Your browser does not support clipboard copy.");
-        return;
-      }
-
-      navigator.clipboard.writeText(text)
-        .then(() => {
-          console.log("Text copied to clipboard!");
-          alert("Text copied to clipboard!");
-        })
-        .catch(err => {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).catch(err => {
           console.error("Copy failed: ", err);
-          alert("Copy failed. Check browser settings.");
         });
+      } else {
+        console.warn("Clipboard API not supported.");
+      }
     }
   </script>
 
