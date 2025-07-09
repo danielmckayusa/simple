@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Copy Text Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f9f9f9;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quick Copy Text</h1>
+  <textarea id="textToCopy">Here is the text you want to make easy to copy.</textarea><br>
+  <button onclick="copyText()">Copy to Clipboard</button>
+
+  <script>
+    function copyText() {
+      const textarea = document.getElementById("textToCopy");
+      textarea.select();
+      textarea.setSelectionRange(0, 99999); // for mobile devices
+      document.execCommand("copy");
+      alert("Text copied to clipboard!");
+    }
+  </script>
+</body>
+</html>
